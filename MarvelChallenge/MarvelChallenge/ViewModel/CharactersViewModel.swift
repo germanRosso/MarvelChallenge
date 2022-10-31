@@ -8,10 +8,16 @@
 import Foundation
 
 class CharactersViewModel: ObservableObject {
-    @Published var charactersResponse = [CharactersModel]()
     @Published var marvelCharacters = [CharactersModel.MarvelResults]()
     @Published var isLoading = false
     // error scenario
     @Published var hasAnError = false
     @Published var alertMessage = ""
+    
+    @Published var fetchLimit = 15
+    @Published var selectedCharacter: CharactersModel.MarvelResults
+    
+    init() {
+        self.selectedCharacter = CharactersModel.MarvelResults.dummyCharacter
+    }
 }

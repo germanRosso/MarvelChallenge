@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+class ComicsViewModel: ObservableObject {
+    @Published var comicsByCharacter = [ComicsModel.ComicsResults]()
+    @Published var isLoading = false
+}

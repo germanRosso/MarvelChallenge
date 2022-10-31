@@ -20,6 +20,13 @@
 		8246C68B28DAB01800AC309E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8246C68A28DAB01800AC309E /* Preview Assets.xcassets */; };
 		8246C69228DAB0A700AC309E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246C69128DAB0A700AC309E /* LoginView.swift */; };
 		8246C69428DAB23F00AC309E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246C69328DAB23F00AC309E /* ColorExtension.swift */; };
+		82754444290F76F100C15D0F /* CharactersCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82754443290F76F100C15D0F /* CharactersCardView.swift */; };
+		82B7A2A8290EE45A00EC5FA2 /* CharactersDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */; };
+		82B7A2AA290EE63A00EC5FA2 /* MarvelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */; };
+		82B7A2AE290F114A00EC5FA2 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */; };
+		82B7A2B0290F170E00EC5FA2 /* ComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2AF290F170E00EC5FA2 /* ComicsViewModel.swift */; };
+		82B7A2B2290F173200EC5FA2 /* ComicsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2B1290F173200EC5FA2 /* ComicsAPI.swift */; };
+		82B7A2B4290F1F9300EC5FA2 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2B3290F1F9300EC5FA2 /* UIScreenExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +49,13 @@
 		8246C68A28DAB01800AC309E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8246C69128DAB0A700AC309E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8246C69328DAB23F00AC309E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		82754443290F76F100C15D0F /* CharactersCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCardView.swift; sourceTree = "<group>"; };
+		82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailView.swift; sourceTree = "<group>"; };
+		82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeaderView.swift; sourceTree = "<group>"; };
+		82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
+		82B7A2AF290F170E00EC5FA2 /* ComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewModel.swift; sourceTree = "<group>"; };
+		82B7A2B1290F173200EC5FA2 /* ComicsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsAPI.swift; sourceTree = "<group>"; };
+		82B7A2B3290F1F9300EC5FA2 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +83,9 @@
 			children = (
 				8246C69128DAB0A700AC309E /* LoginView.swift */,
 				82331BBE28DE24E9000E0510 /* CharactersView.swift */,
+				82754443290F76F100C15D0F /* CharactersCardView.swift */,
+				82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */,
+				82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */,
 				82331BC028DE24EF000E0510 /* EventsView.swift */,
 			);
 			path = Views;
@@ -99,6 +116,7 @@
 			children = (
 				8246C69328DAB23F00AC309E /* ColorExtension.swift */,
 				82331BBA28DE21FB000E0510 /* FontExtension.swift */,
+				82B7A2B3290F1F9300EC5FA2 /* UIScreenExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -107,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				82331BC228DE269B000E0510 /* CharactersAPI.swift */,
+				82B7A2B1290F173200EC5FA2 /* ComicsAPI.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -115,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				82331BC528DE26F7000E0510 /* CharactersViewModel.swift */,
+				82B7A2AF290F170E00EC5FA2 /* ComicsViewModel.swift */,
 				82331BC428DE26A2000E0510 /* WebServices */,
 			);
 			path = ViewModel;
@@ -124,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				82331BC828DE2C2F000E0510 /* CharactersModel.swift */,
+				82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,11 +260,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				82331BC628DE26F7000E0510 /* CharactersViewModel.swift in Sources */,
+				82B7A2B4290F1F9300EC5FA2 /* UIScreenExtension.swift in Sources */,
 				821C73B2290B78A20078CD30 /* Constants.swift in Sources */,
+				82B7A2B2290F173200EC5FA2 /* ComicsAPI.swift in Sources */,
 				82331BC328DE269B000E0510 /* CharactersAPI.swift in Sources */,
+				82B7A2B0290F170E00EC5FA2 /* ComicsViewModel.swift in Sources */,
+				82B7A2A8290EE45A00EC5FA2 /* CharactersDetailView.swift in Sources */,
+				82B7A2AA290EE63A00EC5FA2 /* MarvelHeaderView.swift in Sources */,
 				82331BBB28DE21FB000E0510 /* FontExtension.swift in Sources */,
 				82331BC928DE2C2F000E0510 /* CharactersModel.swift in Sources */,
+				82754444290F76F100C15D0F /* CharactersCardView.swift in Sources */,
 				82331BC128DE24EF000E0510 /* EventsView.swift in Sources */,
+				82B7A2AE290F114A00EC5FA2 /* ComicsModel.swift in Sources */,
 				8246C69228DAB0A700AC309E /* LoginView.swift in Sources */,
 				82331BBF28DE24E9000E0510 /* CharactersView.swift in Sources */,
 				8246C68628DAB01600AC309E /* ContentView.swift in Sources */,
@@ -386,6 +414,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,6 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

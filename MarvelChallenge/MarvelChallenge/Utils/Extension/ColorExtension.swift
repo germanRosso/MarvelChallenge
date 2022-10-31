@@ -120,4 +120,6 @@ extension Color {
     static let marvel0000001F: Color = Color(hex: "0000001F")
     static let marvel0000000B: Color = Color(hex: "0000000B")
     static let marvel00000061: Color = Color(hex: "00000061")
+    static let marvel000000: Color = Color(hex: "000000")
+    static let marvel222053: Color = Color(hex: "222053")
 }

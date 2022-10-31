@@ -8,23 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = CharactersViewModel()
+    @State private var selection = 0
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
     var body: some View {
-        NavigationView {
-            TabView {
-                CharactersView(viewmodel: viewModel)
-                    .tabItem {
-                        Image("superhero")
-                    }
-                EventsView()
-                    .tabItem {
-                        Image("calendar")
-                            .foregroundColor(.primary)
-                    }
+        ZStack {
+            NavigationView {
+                TabView(selection: $selection) {
+                    CharactersView()
+                        .tabItem {
+                            VStack {
+                                Image(selection == 0 ? "superhero" : "superhero-gray")
+                                Text("Characters")
+                            }
+                        }
+                        .tag(0)
+                    EventsView()
+                        .tabItem {
+                            VStack {
+                                Image(selection == 1 ? "calendar" : "calendar-gray")
+                                Text("Characters")
+                            }
+                        }
+                        .tag(1)
+                }
+                .accentColor(.marvel262626)
             }
-//            .task {
-//                await viewModel.getCharacters()
-//            }
         }
     }
 }

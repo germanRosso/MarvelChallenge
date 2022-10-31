@@ -8,76 +8,74 @@
 import SwiftUI
 
 struct CharactersView: View {
-    @StateObject var viewmodel: CharactersViewModel
+    @StateObject var viewModel = CharactersViewModel()
+    @State var showDetails = false
     var body: some View {
-        VStack(spacing:0) {
-            headerView
-            ScrollView {
-                ForEach(viewmodel.marvelCharacters.lazy.sorted(by: {$0.name < $1.name}), id: \.name) { superhero in
-                    CharacterCardView(imagePath: superhero.thumbnail.path, imageFormat: superhero.thumbnail.url, title: superhero.name, subtitle: superhero.description)
-                }
-                .task {
-                    await viewmodel.getCharacters()
-                }
+        ZStack {
+            VStack {
+                MarvelHeaderView(title: "Marvel Challenge", action: {}, opacity: 0, disabled: true)
+                charactersList
             }
-            .frame(width: UIScreen.main.bounds.width * 0.9)
-            .padding()
             .background(Color.marvelECEFF1)
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-    private var headerView: some View {
-        ZStack {
-            Color.marvel262626
-                .edgesIgnoringSafeArea(.top)
-            Text("Marvel Challenge")
-                .foregroundColor(.marvelFFFFFF)
-                .font(.robotoCondensedBold20)
-        }
-        .frame(height: 56)
-    }
-}
-
-struct CharacterCardView: View {
-    var imagePath: String
-    var imageFormat: String
-    var title: String
-    var subtitle: String
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .foregroundColor(.marvelFFFFFF)
-                .shadow(color: .black.opacity(0.3), radius: 2)
-            HStack {
-                AsyncImage(
-                    url: URL(string: imagePath+"."+imageFormat),
-                    content: { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 120, maxHeight: 120)
-                    },
-                    placeholder: {
-                        ProgressView()
-                            .frame(maxWidth: 120, maxHeight: 120)
-                    }
-                )
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.robotoCondensed24)
-                    Text(subtitle)
-                        .font(.roboto14)
-                }
-                .padding()
-                Spacer()
+            if showDetails {
+                CharactersDetailView(viewModel: viewModel, showDetails: $showDetails)
             }
         }
-        .frame(height: 120)
-        .padding(5)
+        .navigationBarTitleDisplayMode(.inline)
+        .task {
+            await viewModel.getCharacters(fetchLimit: viewModel.fetchLimit)
+        }
+    }
+    private var charactersList: some View {
+        ScrollViewReader { proxy in
+            ScrollView {
+                LazyVStack {
+                    ForEach(viewModel.marvelCharacters.sorted(by: {$0.name < $1.name}), id: \.name) { character in
+                        CharactersCardView(character: character)
+                            .onTapGesture {
+                                viewModel.selectedCharacter = character
+                                withAnimation {
+                                    showDetails = true
+                                }
+                            }
+                        if viewModel.marvelCharacters.last?.name == character.name && viewModel.fetchLimit <= 90 {
+                            ProgressView()
+                                .padding(.vertical, 5)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                        if viewModel.fetchLimit < 90 {
+                                            viewModel.fetchLimit += 15
+                                        } else {
+                                            viewModel.fetchLimit += 9
+                                        }
+                                        Task {
+                                            await viewModel.getCharacters(fetchLimit: viewModel.fetchLimit)
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                }
+                .frame(width: UIScreen.width * 0.95)
+                .padding(.vertical, 5)
+            }
+            .background(Color.marvelECEFF1)
+            .onDisappear {
+                viewModel.fetchLimit = 15
+                proxy.scrollTo(viewModel.marvelCharacters[0].name, anchor: .top)
+            }
+        }
+    }
+    private var columns: [GridItem] {
+        let columns = [
+            GridItem(.flexible())
+        ]
+        return columns
     }
 }
 
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView(viewmodel: CharactersViewModel())
+        CharactersView(viewModel: CharactersViewModel())
     }
 }

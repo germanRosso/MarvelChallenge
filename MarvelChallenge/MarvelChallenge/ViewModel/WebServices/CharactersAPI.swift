@@ -10,9 +10,9 @@ import Foundation
 
 extension CharactersViewModel {
     enum CharactersAPI {
-        // Builds a URL to 'get dog's pictures by breed' method
-        case getCharacters(publicKey: String)
-        case getEvents(publicKey: String)
+        // Builds a URL to 'get characters's data method
+        case getCharacters(publicKey: String, limit: Int)
+//        case getEvents(publicKey: String)
         
         var url: URL? {
             var component = URLComponents()
@@ -26,13 +26,9 @@ extension CharactersViewModel {
         // query builder
         private func queryBuilder() -> [URLQueryItem]? {
             switch self {
-            case .getCharacters(let publicKey):
-                return [URLQueryItem(name: "apikey", value: publicKey.description),
-                        URLQueryItem(name: "ts", value: "1"),
-                        URLQueryItem(name: "hash", value: "51a3ecf2f92a23817992a2663183325e")
-                ]
-            case .getEvents(let publicKey):
-                return [URLQueryItem(name: "apikey", value: publicKey.description),
+            case .getCharacters(let publicKey, let limit):
+                return [URLQueryItem(name: "limit", value: String(limit)),
+                        URLQueryItem(name: "apikey", value: publicKey.description),
                         URLQueryItem(name: "ts", value: "1"),
                         URLQueryItem(name: "hash", value: "51a3ecf2f92a23817992a2663183325e")
                 ]
@@ -44,18 +40,16 @@ extension CharactersViewModel {
             switch self {
             case .getCharacters:
                 return "characters"
-            case .getEvents:
-                return "events"
             }
         }
     }
     
     
     @MainActor
-    func getCharacters() async  {
+    func getCharacters(fetchLimit: Int) async  {
         isLoading = true
         let fetchTask = Task { () -> CharactersModel in
-            let url = CharactersAPI.getCharacters(publicKey: "3a783b25c80e1c44875356dd363f272d").url!
+            let url = CharactersAPI.getCharacters(publicKey: "3a783b25c80e1c44875356dd363f272d", limit: fetchLimit).url!
             print(url)
 //            let url = URL(string: "https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0/v1/public/characters")!
             let (data, response) = try await URLSession.shared.data(from: url)
@@ -92,10 +86,10 @@ extension CharactersViewModel {
         switch result {
         case .success(let characters):
             print(characters.data.results.count)
-//            print(characters)
             self.marvelCharacters = characters.data.results
         case .failure(let error):
-            print(error.localizedDescription)
+            print("Error", error.localizedDescription)
+            print(error)
 //            self.alertMessage = error.localizedDescription
 //            self.hasAnError = true
         }
