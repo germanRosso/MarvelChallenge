@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CharactersDetailView: View {
     @StateObject var comicsVM = ComicsViewModel()
-    @ObservedObject var viewModel: CharactersViewModel
-    @Binding var showDetails: Bool
+    @ObservedObject var charactersVM: CharactersViewModel
+    @Binding var showCharacterDetails: Bool
     var body: some View {
         VStack(spacing: 0) {
-            MarvelHeaderView(title: viewModel.selectedCharacter.name, action: {withAnimation {showDetails = false}}, opacity: 100, disabled: false)
+            MarvelHeaderView(title: charactersVM.selectedCharacter.name, action: {withAnimation {showCharacterDetails = false}}, opacity: 100, disabled: false)
             ScrollView {
                 characterImage
                 characterDescription
@@ -29,7 +29,7 @@ struct CharactersDetailView: View {
     }
     private var characterImage: some View {
             AsyncImage(
-                url: URL(string: viewModel.selectedCharacter.thumbnail.path+"."+viewModel.selectedCharacter.thumbnail.url),
+                url: URL(string: charactersVM.selectedCharacter.thumbnail.path+"."+charactersVM.selectedCharacter.thumbnail.url),
                 content: { image in
                     image.resizable()
                         .scaledToFit()
@@ -45,7 +45,7 @@ struct CharactersDetailView: View {
     }
     private var characterDescription: some View {
         VStack {
-            Text(viewModel.selectedCharacter.description)
+            Text(charactersVM.selectedCharacter.description)
                 .font(.roboto14)
                 .foregroundColor(.marvel222053)
                 .frame(width: UIScreen.width80)
@@ -86,6 +86,6 @@ struct CharactersDetailView: View {
 
 struct CharactersDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersDetailView(viewModel: CharactersViewModel(), showDetails: .constant(false))
+        CharactersDetailView(charactersVM: CharactersViewModel(), showCharacterDetails: .constant(false))
     }
 }

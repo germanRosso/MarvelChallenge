@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - CharactersModel
 struct CharactersModel: Codable {
     let code: Int
     let status: String
@@ -14,11 +15,13 @@ struct CharactersModel: Codable {
 }
 
 extension CharactersModel {
+    // MARK: - MarvelData
     struct MarvelData: Codable {
         let count: Int
         let results: [MarvelResults]
     }
     
+    // MARK: - MarvelResults
     struct MarvelResults: Codable {
         let id: Int
         let name: String
@@ -28,6 +31,7 @@ extension CharactersModel {
         static let dummyCharacter = MarvelResults(id: 1009652, name: "Thanos", description: "The Mad Titan Thanos, a melancholy, brooding individual, consumed with the concept of death, sought out personal power and increased strength, endowing himself with cybernetic implants until he became more powerful than any of his brethren.", thumbnail: CharactersModel.Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/6/40/5274137e3e2cd", url: "jpg"))
     }
     
+    // MARK: - Thumbnail
     struct Thumbnail: Codable {
         let path: String
         let url: String
@@ -38,12 +42,14 @@ extension CharactersModel {
         }
     }
     
+    // MARK: - Comics
     struct Comics: Codable, Identifiable {
         var id = UUID()
         let available: Int
         let items: [Items]
     }
     
+    // MARK: - Items
     struct Items: Codable {
         let resourceURI: String
         let name: String

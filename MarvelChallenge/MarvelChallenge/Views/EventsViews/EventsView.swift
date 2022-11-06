@@ -1,5 +1,5 @@
 //
-//  CharactersView.swift
+//  EventsView.swift
 //  MarvelChallenge
 //
 //  Created by German Rosso on 23/09/2022.
@@ -7,49 +7,49 @@
 
 import SwiftUI
 
-struct CharactersView: View {
-    @StateObject var viewModel = CharactersViewModel()
-    @State var showDetails = false
+struct EventsView: View {
+    @ObservedObject var eventsVM: EventsViewModel
+    @State var showEventDetails = false
     var body: some View {
         ZStack {
             VStack {
                 MarvelHeaderView(title: "Marvel Challenge", action: {}, opacity: 0, disabled: true)
-                charactersList
+                eventsList
             }
             .background(Color.marvelECEFF1)
-            if showDetails {
-                CharactersDetailView(viewModel: viewModel, showDetails: $showDetails)
+            .sheet(isPresented: $showEventDetails) {
+                EventDetailView(eventsVM: eventsVM)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            await viewModel.getCharacters(fetchLimit: viewModel.fetchLimit)
+            await eventsVM.getEvents(fetchLimit: eventsVM.fetchLimit)
         }
     }
-    private var charactersList: some View {
+    private var eventsList: some View {
         ScrollViewReader { proxy in
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.marvelCharacters.sorted(by: {$0.name < $1.name}), id: \.name) { character in
-                        CharactersCardView(character: character)
+                    ForEach(eventsVM.marvelEvents, id: \.id) { event in
+                        EventsCardView(event: event)
                             .onTapGesture {
-                                viewModel.selectedCharacter = character
+                                eventsVM.selectedEvent = event
                                 withAnimation {
-                                    showDetails = true
+                                    showEventDetails = true
                                 }
                             }
-                        if viewModel.marvelCharacters.last?.name == character.name && viewModel.fetchLimit <= 90 {
+                        if eventsVM.marvelEvents.last?.title == event.title && eventsVM.fetchLimit <= 90 {
                             ProgressView()
                                 .padding(.vertical, 5)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                        if viewModel.fetchLimit < 90 {
-                                            viewModel.fetchLimit += 15
+                                        if eventsVM.fetchLimit < 90 {
+                                            eventsVM.fetchLimit += 15
                                         } else {
-                                            viewModel.fetchLimit += 9
+                                            eventsVM.fetchLimit += 9
                                         }
                                         Task {
-                                            await viewModel.getCharacters(fetchLimit: viewModel.fetchLimit)
+                                            await eventsVM.getEvents(fetchLimit: eventsVM.fetchLimit)
                                         }
                                     }
                                 }
@@ -61,8 +61,8 @@ struct CharactersView: View {
             }
             .background(Color.marvelECEFF1)
             .onDisappear {
-                viewModel.fetchLimit = 15
-                proxy.scrollTo(viewModel.marvelCharacters[0].name, anchor: .top)
+                eventsVM.fetchLimit = 15
+                proxy.scrollTo(eventsVM.marvelEvents[0].title, anchor: .top)
             }
         }
     }
@@ -74,8 +74,8 @@ struct CharactersView: View {
     }
 }
 
-struct CharactersView_Previews: PreviewProvider {
+struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView(viewModel: CharactersViewModel())
+        EventsView(eventsVM: EventsViewModel())
     }
 }

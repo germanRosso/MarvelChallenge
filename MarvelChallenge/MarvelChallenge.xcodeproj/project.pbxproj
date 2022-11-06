@@ -21,6 +21,12 @@
 		8246C69228DAB0A700AC309E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246C69128DAB0A700AC309E /* LoginView.swift */; };
 		8246C69428DAB23F00AC309E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246C69328DAB23F00AC309E /* ColorExtension.swift */; };
 		82754444290F76F100C15D0F /* CharactersCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82754443290F76F100C15D0F /* CharactersCardView.swift */; };
+		829B85C5291720E000B0BEA4 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B85C4291720E000B0BEA4 /* EventsViewModel.swift */; };
+		829B85C92917213500B0BEA4 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B85C82917213500B0BEA4 /* EventsModel.swift */; };
+		829B85CC291723B700B0BEA4 /* EventsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B85CB291723B700B0BEA4 /* EventsAPI.swift */; };
+		829B85D12917506C00B0BEA4 /* EventsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B85D02917506C00B0BEA4 /* EventsCardView.swift */; };
+		829B85D32917520500B0BEA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B85D22917520500B0BEA4 /* LoadingView.swift */; };
+		829B85D529175EAC00B0BEA4 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B85D429175EAC00B0BEA4 /* EventDetailView.swift */; };
 		82B7A2A8290EE45A00EC5FA2 /* CharactersDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */; };
 		82B7A2AA290EE63A00EC5FA2 /* MarvelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */; };
 		82B7A2AE290F114A00EC5FA2 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */; };
@@ -50,6 +56,12 @@
 		8246C69128DAB0A700AC309E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8246C69328DAB23F00AC309E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		82754443290F76F100C15D0F /* CharactersCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCardView.swift; sourceTree = "<group>"; };
+		829B85C4291720E000B0BEA4 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		829B85C82917213500B0BEA4 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		829B85CB291723B700B0BEA4 /* EventsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsAPI.swift; sourceTree = "<group>"; };
+		829B85D02917506C00B0BEA4 /* EventsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCardView.swift; sourceTree = "<group>"; };
+		829B85D22917520500B0BEA4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		829B85D429175EAC00B0BEA4 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailView.swift; sourceTree = "<group>"; };
 		82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeaderView.swift; sourceTree = "<group>"; };
 		82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
@@ -72,6 +84,7 @@
 		82331BB228DE202E000E0510 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				829B85CE29172C4D00B0BEA4 /* Components */,
 				82331BB528DE20A0000E0510 /* Fonts */,
 				82331BB928DE21EC000E0510 /* Extension */,
 			);
@@ -82,11 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				8246C69128DAB0A700AC309E /* LoginView.swift */,
-				82331BBE28DE24E9000E0510 /* CharactersView.swift */,
-				82754443290F76F100C15D0F /* CharactersCardView.swift */,
-				82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */,
-				82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */,
-				82331BC028DE24EF000E0510 /* EventsView.swift */,
+				829B85CD29172C2700B0BEA4 /* CharactersViews */,
+				829B85CF29172C5E00B0BEA4 /* EventsViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,9 +143,8 @@
 		82331BC728DE2716000E0510 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				82331BC528DE26F7000E0510 /* CharactersViewModel.swift */,
-				82B7A2AF290F170E00EC5FA2 /* ComicsViewModel.swift */,
-				82331BC428DE26A2000E0510 /* WebServices */,
+				829B85C2291720A800B0BEA4 /* CharactersViewModel */,
+				829B85C3291720C500B0BEA4 /* EventsViewModel */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -143,8 +152,8 @@
 		82331BCA28DE2C3D000E0510 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				82331BC828DE2C2F000E0510 /* CharactersModel.swift */,
-				82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */,
+				829B85C62917210500B0BEA4 /* CharactersModel */,
+				829B85C72917211400B0BEA4 /* EventsModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +196,79 @@
 				8246C68A28DAB01800AC309E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		829B85C2291720A800B0BEA4 /* CharactersViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				82331BC528DE26F7000E0510 /* CharactersViewModel.swift */,
+				82B7A2AF290F170E00EC5FA2 /* ComicsViewModel.swift */,
+				82331BC428DE26A2000E0510 /* WebServices */,
+			);
+			path = CharactersViewModel;
+			sourceTree = "<group>";
+		};
+		829B85C3291720C500B0BEA4 /* EventsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				829B85C4291720E000B0BEA4 /* EventsViewModel.swift */,
+				829B85CA2917239E00B0BEA4 /* WebServices */,
+			);
+			path = EventsViewModel;
+			sourceTree = "<group>";
+		};
+		829B85C62917210500B0BEA4 /* CharactersModel */ = {
+			isa = PBXGroup;
+			children = (
+				82331BC828DE2C2F000E0510 /* CharactersModel.swift */,
+				82B7A2AD290F114A00EC5FA2 /* ComicsModel.swift */,
+			);
+			path = CharactersModel;
+			sourceTree = "<group>";
+		};
+		829B85C72917211400B0BEA4 /* EventsModel */ = {
+			isa = PBXGroup;
+			children = (
+				829B85C82917213500B0BEA4 /* EventsModel.swift */,
+			);
+			path = EventsModel;
+			sourceTree = "<group>";
+		};
+		829B85CA2917239E00B0BEA4 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				829B85CB291723B700B0BEA4 /* EventsAPI.swift */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		829B85CD29172C2700B0BEA4 /* CharactersViews */ = {
+			isa = PBXGroup;
+			children = (
+				82331BBE28DE24E9000E0510 /* CharactersView.swift */,
+				82754443290F76F100C15D0F /* CharactersCardView.swift */,
+				82B7A2A7290EE45A00EC5FA2 /* CharactersDetailView.swift */,
+			);
+			path = CharactersViews;
+			sourceTree = "<group>";
+		};
+		829B85CE29172C4D00B0BEA4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				82B7A2A9290EE63A00EC5FA2 /* MarvelHeaderView.swift */,
+				829B85D22917520500B0BEA4 /* LoadingView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		829B85CF29172C5E00B0BEA4 /* EventsViews */ = {
+			isa = PBXGroup;
+			children = (
+				82331BC028DE24EF000E0510 /* EventsView.swift */,
+				829B85D02917506C00B0BEA4 /* EventsCardView.swift */,
+				829B85D429175EAC00B0BEA4 /* EventDetailView.swift */,
+			);
+			path = EventsViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,21 +344,27 @@
 				82331BC628DE26F7000E0510 /* CharactersViewModel.swift in Sources */,
 				82B7A2B4290F1F9300EC5FA2 /* UIScreenExtension.swift in Sources */,
 				821C73B2290B78A20078CD30 /* Constants.swift in Sources */,
+				829B85D12917506C00B0BEA4 /* EventsCardView.swift in Sources */,
 				82B7A2B2290F173200EC5FA2 /* ComicsAPI.swift in Sources */,
 				82331BC328DE269B000E0510 /* CharactersAPI.swift in Sources */,
 				82B7A2B0290F170E00EC5FA2 /* ComicsViewModel.swift in Sources */,
 				82B7A2A8290EE45A00EC5FA2 /* CharactersDetailView.swift in Sources */,
+				829B85D529175EAC00B0BEA4 /* EventDetailView.swift in Sources */,
 				82B7A2AA290EE63A00EC5FA2 /* MarvelHeaderView.swift in Sources */,
 				82331BBB28DE21FB000E0510 /* FontExtension.swift in Sources */,
+				829B85C5291720E000B0BEA4 /* EventsViewModel.swift in Sources */,
 				82331BC928DE2C2F000E0510 /* CharactersModel.swift in Sources */,
 				82754444290F76F100C15D0F /* CharactersCardView.swift in Sources */,
 				82331BC128DE24EF000E0510 /* EventsView.swift in Sources */,
+				829B85CC291723B700B0BEA4 /* EventsAPI.swift in Sources */,
 				82B7A2AE290F114A00EC5FA2 /* ComicsModel.swift in Sources */,
 				8246C69228DAB0A700AC309E /* LoginView.swift in Sources */,
 				82331BBF28DE24E9000E0510 /* CharactersView.swift in Sources */,
 				8246C68628DAB01600AC309E /* ContentView.swift in Sources */,
 				8246C68428DAB01600AC309E /* MarvelChallengeApp.swift in Sources */,
+				829B85C92917213500B0BEA4 /* EventsModel.swift in Sources */,
 				8246C69428DAB23F00AC309E /* ColorExtension.swift in Sources */,
+				829B85D32917520500B0BEA4 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

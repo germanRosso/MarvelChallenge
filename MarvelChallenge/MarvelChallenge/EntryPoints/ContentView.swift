@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var charactersVM = CharactersViewModel()
+    @StateObject var eventsVM = EventsViewModel()
     @State private var selection = 0
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -16,7 +18,7 @@ struct ContentView: View {
         ZStack {
             NavigationView {
                 TabView(selection: $selection) {
-                    CharactersView()
+                    CharactersView(charactersVM: charactersVM)
                         .tabItem {
                             VStack {
                                 Image(selection == 0 ? "superhero" : "superhero-gray")
@@ -24,16 +26,19 @@ struct ContentView: View {
                             }
                         }
                         .tag(0)
-                    EventsView()
+                    EventsView(eventsVM: eventsVM)
                         .tabItem {
                             VStack {
                                 Image(selection == 1 ? "calendar" : "calendar-gray")
-                                Text("Characters")
+                                Text("Events")
                             }
                         }
                         .tag(1)
                 }
                 .accentColor(.marvel262626)
+            }
+            if charactersVM.isLoading || eventsVM.isLoading {
+                LoadingView()
             }
         }
     }
